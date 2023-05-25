@@ -1,0 +1,127 @@
+<div id="Page_TitleTablet" class="mb-1">
+  <div id="Page_TitleTablet_fh">
+    <div id="Hi_Dash_Welcome_bac">
+      <span>Hi {{account?.name}}</span>
+    </div>
+    <div id="Welcome_back">
+      <span>{{pageTitle}}</span>
+    </div>
+  </div>
+</div>
+<div id="accordion">
+  <form name="aboutUsform" role="form" (ngSubmit)="saveAboutUs()" [formGroup]="settingsForm">
+    <div class="card">
+      <div class="card-header" id="headingOne" (click)="isExpand('aboutus')" [ngClass]="{'bgExpand': isAboutExpanded }">
+        <div class="row col-md-12">
+          <h5 class="mb-0 col-md-6">
+            <button class="btn btn-link">
+              <label class="settingsTitle float-left">About Us</label>
+            </button>
+          </h5>
+          <h5 class="mb-0 col-md-6">
+            <span class="float-right collapseIcon mt-2" (click)="collapse1.toggle()"
+              [attr.aria-expanded]="!isAboutUsCollapsed" aria-controls="collapseExample" role="button">
+              <fa-icon icon="chevron-down" class="iconColor"></fa-icon>
+            </span>
+          </h5>
+        </div>
+      </div>
+      <div #collapse1="ngbCollapse" [(ngbCollapse)]="isAboutUsCollapsed" data-parent="#accordion">
+        <div class="card-body">
+          <angular-editor id="aboutUs" name="aboutUs" formControlName="aboutUs" [config]="config"></angular-editor>
+          <div class="row col-md-12"
+            *ngIf="settingsForm.get('aboutUs')!.invalid &&(settingsForm.get('aboutUs')!.dirty || settingsForm.get('aboutUs')!.touched)">
+            <small class="form-text text-danger" *ngIf="settingsForm.get('aboutUs')?.errors?.['required']">
+              About Us is required.
+            </small>
+          </div>
+          <div class="row col-md-12">
+            <div class="form-group col-md-6 mt-2">
+              <button type="submit" class="btn btn-primary savebtn mr-3"
+                [disabled]="settingsForm.invalid||isAboutUsSaving">Update</button>
+              <button type="button" [routerLink]="['/']" class="btn btn-secondary cancelbtn">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <form name="privacypolicyform" role="form" (ngSubmit)="savePrivacyPolicy()" [formGroup]="settingsForm">
+    <div class="card">
+      <div class="card-header" id="headingTwo" (click)="isExpand('privacypolicy')"
+        [ngClass]="{'bgExpand': isPrivacypolicyExpanded }">
+        <div class="row col-md-12">
+          <h5 class="mb-0 col-md-6">
+            <button class="btn btn-link">
+              <label class="settingsTitle">Privacy Policy</label>
+            </button>
+          </h5>
+          <h5 class="mb-0 col-md-6 mt-2">
+            <span class=" float-right collapseIcon mt-2" (click)="collapse2.toggle()"
+              [attr.aria-expanded]="isPrivacypolicyCollapsed" aria-controls="collapseExample" role="button">
+              <fa-icon icon="chevron-down" class="iconColor"></fa-icon>
+            </span>
+          </h5>
+        </div>
+      </div>
+      <div #collapse2="ngbCollapse" [(ngbCollapse)]="isPrivacypolicyCollapsed" data-parent="#accordion">
+        <div class="card-body">
+          <angular-editor id="privacyPolicy" name="privacyPolicy" formControlName="privacyPolicy" [config]="config">
+          </angular-editor>
+          <div class="row col-md-12"
+            *ngIf="settingsForm.get('privacyPolicy')!.invalid &&(settingsForm.get('privacyPolicy')!.dirty || settingsForm.get('privacyPolicy')!.touched)">
+            <small class="form-text text-danger" *ngIf="settingsForm.get('privacyPolicy')?.errors?.['required']">
+              Privacy Policy is required.
+            </small>
+          </div>
+          <div class="row col-md-12">
+            <div class="form-group col-md-6 mt-2">
+              <button type="submit" class="btn btn-primary savebtn mr-3"
+                [disabled]="settingsForm.invalid||isPrivacyPolicySaving">Update</button>
+              <button type="button" [routerLink]="['/']" class="btn btn-secondary cancelbtn">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <form name="termsAndConditionsform" role="form" (ngSubmit)="saveTermsAndCondition()" [formGroup]="settingsForm">
+    <div class="card">
+      <div class="card-header" id="headingThree" (click)="isExpand('termsandconditions')"
+        [ngClass]="{'bgExpand': isTermsandconditionExpanded }">
+        <div class="row col-md-12">
+          <h5 class="mb-0 col-md-6">
+            <button class="btn btn-link">
+              <label class="settingsTitle">Terms And Conditions</label>
+            </button>
+          </h5>
+          <h5 class="mb-0 col-md-6">
+            <span class=" float-right collapseIcon mt-2" (click)="collapse3.toggle()"
+              [attr.aria-expanded]="isTermsandconditionCollapsed" aria-controls="collapseExample" role="button">
+              <fa-icon icon="chevron-down" class="iconColor"></fa-icon>
+            </span>
+          </h5>
+        </div>
+      </div>
+      <div #collapse3="ngbCollapse" [(ngbCollapse)]="isTermsandconditionCollapsed" data-parent="#accordion">
+        <div class="card-body">
+          <angular-editor id="termsAndConditions" name="termsAndConditions" formControlName="termsAndConditions"
+            [config]="config"></angular-editor>
+          <div class="row col-md-12"
+            *ngIf="settingsForm.get('termsAndConditions')!.invalid &&(settingsForm.get('termsAndConditions')!.dirty || settingsForm.get('termsAndConditions')!.touched)">
+            <small class="form-text text-danger" *ngIf="settingsForm.get('termsAndConditions')?.errors?.['required']">
+              Terms And Condition is required.
+            </small>
+          </div>
+          <div class="row col-md-12 mt-2">
+            <div class="form-group col-md-6">
+              <button type="submit" class="btn btn-primary savebtn mr-3"
+                [disabled]="settingsForm.invalid||isTermsAndConditionsSaving">Update</button>
+              <button type="button" [routerLink]="['/']" class="btn btn-secondary cancelbtn">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

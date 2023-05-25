@@ -1,0 +1,332 @@
+<div id="Page_TitleTablet" class="mb-1">
+  <div id="Page_TitleTablet_fh">
+    <div id="Hi_Dash_Welcome_bac">
+      <span>Hi {{account?.name}}, </span>
+    </div>
+    <div id="Welcome_back">
+      <span>{{pageTitle}}</span>
+    </div>
+  </div>
+</div>
+<div class="py-5 tabBorder px-2">
+  <ul ngbNav #nav="ngbNav" class="nav-tabs nav nav-pills mb-3 col-12">
+    <li ngbNavItem class="nav-item col-6 p-0">
+      <a ngbNavLink class="nav-link text-center">Object Details</a>
+      <ng-template ngbNavContent>
+        <form class="p-5" name="form" role="form" (ngSubmit)="save()" [formGroup]="wordUpdateForm">
+          <div class="row col-md-12">
+            <div class="form-group col-md-6">
+              <span>English Title <span style="color: red; font-weight: bold;">*</span></span>
+            </div>
+            <div class="form-group col-md-6">
+              <span>Arabic Title <span style="color: red; font-weight: bold;">*</span> </span>
+            </div>
+          </div>
+          <div class="row col-md-12">
+            <div class="form-group col-md-6">
+              <input type="text" class="form-control inputStyle" name="name" placeholder="Word Name"
+                formControlName="name" data-cy="name" readonly />
+            </div>
+            <div class="form-group col-md-6">
+              <input type="text " class="form-control inputStyle bg" name="title_Ar" formControlName="title_Ar"
+                data-cy="title_Ar" placeholder="Arabic Title" dir="rtl" readonly />
+            </div>
+          </div>
+          <div class="row col-md-12">
+            <div class="col-md-6" *ngIf="
+                wordUpdateForm.get('title_En')!.invalid &&
+                (wordUpdateForm.get('title_En')!.dirty ||
+                  wordUpdateForm.get('title_En')!.touched)
+              ">
+              <small class="form-text text-danger" *ngIf="wordUpdateForm.get('title_En')?.errors?.['required']">
+                Title is required.
+              </small>
+            </div>
+            <div class="col-md-6" *ngIf="
+                wordUpdateForm.get('title_Ar')!.invalid &&
+                (wordUpdateForm.get('title_Ar')!.dirty ||
+                  wordUpdateForm.get('title_Ar')!.touched)
+              ">
+              <small class="form-text text-danger" *ngIf="wordUpdateForm.get('title_Ar')?.errors?.['required']">
+                Title in Arabic is required.
+              </small>
+            </div>
+          </div>
+          <div class="row col-md-12">
+            <div class="form-group col-md-6">
+              <span>Emirati Dialect in Arabic</span>
+            </div>
+            <div class="form-group col-md-6">
+              <span>Emirati Dialect in English</span>
+            </div>
+          </div>
+          <div class="row col-md-12">
+            <div class="form-group col-md-6">
+              <!-- <input type="text" class="form-control inputStyle" name="emirati_Dilect_Ar"
+                                formControlName="emirati_Dilect_Ar" data-cy="emirati_Dilect_Ar"
+                                placeholder="Emirati Dialect Arabic" dir="rtl"> -->
+              <textarea class="form-control" rows="5" name="emirati_Dilect_Ar" formControlName="emirati_Dilect_Ar"
+                data-cy="emirati_Dilect_Ar" placeholder="Emirati Dialect Arabic" dir="rtl"></textarea>
+            </div>
+            <div class="form-group col-md-6">
+              <!-- <input type="text" class="form-control inputStyle" name="emirati_Dialect"
+                                formControlName="emirati_Dialect" data-cy="emirati_Dialect"
+                                placeholder="Emirati Dialect Arabic In English"/> -->
+              <textarea class="form-control" rows="5" name="emirati_Dialect" formControlName="emirati_Dialect"
+                data-cy="emirati_Dialect" placeholder="Emirati Dialect Arabic In English"></textarea>
+            </div>
+          </div>
+          <div class="row col-md-12">
+            <div class="col-md-6" *ngIf="
+                wordUpdateForm.get('emirati_Dilect_Ar')!.invalid &&
+                (wordUpdateForm.get('emirati_Dilect_Ar')!.dirty ||
+                  wordUpdateForm.get('emirati_Dilect_Ar')!.touched)
+              ">
+              <small class="form-text text-danger"
+                *ngIf="wordUpdateForm.get('emirati_Dilect_Ar')?.errors?.['required']">
+                Emirati Dialect Arabic is required.
+              </small>
+            </div>
+            <div class="col-md-6" *ngIf="
+                wordUpdateForm.get('emirati_Dialect')!.invalid &&
+                (wordUpdateForm.get('emirati_Dialect')!.dirty ||
+                  wordUpdateForm.get('emirati_Dialect')!.touched)
+              ">
+              <small class="form-text text-danger" *ngIf="wordUpdateForm.get('emirati_Dialect')?.errors?.['required']">
+                Emirati Dialect Arabic In English is Required
+              </small>
+            </div>
+          </div>
+          <div class="row col-md-12">
+            <div class="form-group col-md-6">
+              <span>Arabic Title in English <span style="color: red; font-weight: bold;">*</span> </span>
+            </div>
+          </div>
+          <div class="row col-md-12">
+            <!-- <div class="form-group col-md-6">
+                            <input type="text" class="form-control inputStyle" name="interesting_Facts"
+                                formControlName="interesting_Facts" data-cy="interesting_Facts"
+                                placeholder="InterestingFacts in English">
+                        </div> -->
+            <div class="form-group col-md-6">
+              <input type="text " class="form-control inputStyle bg" name="title_En" formControlName="title_En"
+                data-cy="title_En" placeholder="Arabic Title in English" readonly />
+            </div>
+          </div>
+          <div class="row col-md-12">
+            <!-- <div class="col-md-6" *ngIf="wordUpdateForm.get('interesting_Facts')!.invalid &&(wordUpdateForm.get('interesting_Facts')!.dirty || wordUpdateForm.get('interesting_Facts')!.touched)">
+                            <small class="form-text text-danger" *ngIf="wordUpdateForm.get('interesting_Facts')?.errors?.['required']">
+                                Interesting Facts is required.
+                            </small>
+                        </div> -->
+            <div class="col-md-6" *ngIf="
+                wordUpdateForm.get('name')!.invalid &&
+                (wordUpdateForm.get('name')!.dirty ||
+                  wordUpdateForm.get('name')!.touched)
+              ">
+              <small class="form-text text-danger" *ngIf="wordUpdateForm.get('name')?.errors?.['required']">
+                Name is required.
+              </small>
+            </div>
+          </div>
+          <div class="row col-md-12">
+            <div class="form-group col-md-6">
+              <span>Interesting Facts in English</span>
+            </div>
+            <div class="form-group col-md-6">
+              <span>Interesting Facts in Arabic</span>
+            </div>
+          </div>
+          <div class="row col-md-12">
+            <div class="form-group col-md-6">
+              <textarea class="form-control inputStyle" rows="5" name="interesting_Facts"
+                formControlName="interesting_Facts" data-cy="interesting_Facts"
+                placeholder="Interesting Facts in English"></textarea>
+            </div>
+            <div class="form-group col-md-6">
+              <textarea class="form-control inputStyle" rows="5" name="interesting_Facts_Ar"
+                formControlName="interesting_Facts_Ar" data-cy="interesting_Facts_Ar"
+                placeholder="Interesting Facts in Arabic" dir="rtl"></textarea>
+            </div>
+          </div>
+          <div class="row col-md-12">
+            <div class="col-md-6" *ngIf="
+                wordUpdateForm.get('interesting_Facts')!.invalid &&
+                (wordUpdateForm.get('interesting_Facts')!.dirty ||
+                  wordUpdateForm.get('interesting_Facts')!.touched)
+              ">
+              <small class="form-text text-danger"
+                *ngIf="wordUpdateForm.get('interesting_Facts')?.errors?.['required']">
+                Interesting Facts is required.
+              </small>
+            </div>
+            <div class="col-md-6" *ngIf="
+                wordUpdateForm.get('interesting_Facts_Ar')!.invalid &&
+                (wordUpdateForm.get('interesting_Facts_Ar')!.dirty ||
+                  wordUpdateForm.get('interesting_Facts_Ar')!.touched)
+              ">
+              <small class="form-text text-danger"
+                *ngIf="wordUpdateForm.get('interesting_Facts_Ar')?.errors?.['required']">
+                Interesting Facts in Arabic is required.
+              </small>
+            </div>
+          </div>
+
+          <!-- <div class="row col-md-12">
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control inputStyle" name="sentenceUsageRd"
+                                formControlName="sentenceUsageRd" data-cy="sentenceUsageRd"
+                                placeholder="Arabic Word Usage in English">
+                        </div>
+                        <div class="form-group col-md-6">
+                        </div>
+                    </div>
+                    <div class="row col-md-12" >
+                        <div class="col-md-6" *ngIf="wordUpdateForm.get('sentenceUsageRd')!.invalid &&(wordUpdateForm.get('sentenceUsageRd')!.dirty || wordUpdateForm.get('sentenceUsageRd')!.touched)">
+                            <small class="form-text text-danger" *ngIf="wordUpdateForm.get('sentenceUsageRd')?.errors?.required">
+                                Arabic Word Usage in English is required.
+                            </small>
+                        </div>
+                       
+                    </div> -->
+          <div class="row col-md-12 mt-5">
+            <div class="form-group col-md-6">
+              <button [routerLink]="['/words']" type="button" class="btn cancelBtn">
+                Cancel
+              </button>
+            </div>
+            <div class="form-group col-md-6">
+              <button type="submit" class="btn saveBtn float-right" [disabled]="wordUpdateForm.invalid || isSaving">
+                Save Update
+              </button>
+            </div>
+          </div>
+        </form>
+      </ng-template>
+    </li>
+    <li ngbNavItem class="nav-item col-6 p-0">
+      <a ngbNavLink class="nav-link text-center">Object Media</a>
+      <ng-template ngbNavContent>
+        <form (ngSubmit)="saveMedia()" class="p-5">
+          <h5 class="brand_color titleText">Update Media Details</h5>
+          <div class="row col-md-12">
+            <div class="form-group col-md-6">
+              <label>Object Primary Image <span style="color: red; font-weight: bold;">*</span></label>
+              <!-- <img src="{{'data:image/jpg;base64,' + image1}}"> -->
+              <div class="custom-dropzone" ngx-dropzone [accept]="'image/jpeg'" [maxFileSize]="1000000"
+                (change)="onSelect($event, 'image1')" [multiple]="false">
+                <img *ngIf="image1 != ''; else Image1Preview" src="{{ 'data:image/jpg;base64,' + image1 }}"
+                  onError="this.src='assets/images/noimage.jpg'" class="rounded" width="60px" height="60px" />
+                <ng-template #Image1Preview>
+                  <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files1" [file]="f"
+                    [removable]="true" (removed)="onRemove(f, 'image1')">
+                    <!-- <ngx-dropzone-label
+                      >{{ f.name }} ({{ f.type }})</ngx-dropzone-label
+                    > -->
+                  </ngx-dropzone-image-preview>
+                  <button type="button" class="btn btn-warning ml-auto btn-update mr-2">Update</button>
+                </ng-template>                
+              </div>
+              <div class="hint">Height and Width should be 800X800. Supported Extension is .jpg/.jpeg.
+                Size of the Image should be less than 1MB</div>
+            </div>
+            <div class="form-group col-md-6">
+              <label>Secondary Image (Image 01) <span style="color: red; font-weight: bold;">*</span> </label>
+              <div class="custom-dropzone" ngx-dropzone [accept]="'image/jpeg'" [maxFileSize]="1000000"
+                (change)="onSelect($event, 'image2')" [multiple]="false">
+                <img *ngIf="image2 != ''; else Image2Preview" src="{{ 'data:image/jpg;base64,' + image2 }}"
+                  onError="this.src='assets/images/noimage.jpg'" class="rounded" width="60px" height="60px" />
+                <ng-template #Image2Preview>
+                  <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files2" [file]="f"
+                    [removable]="true" (removed)="onRemove(f, 'image2')">
+                    <!-- <ngx-dropzone-label
+                      >{{ f.name }} ({{ f.type }})</ngx-dropzone-label
+                    > -->
+                  </ngx-dropzone-image-preview>
+                  <button type="button" class="btn btn-warning ml-auto btn-update mr-2">Update</button>
+                </ng-template>
+              </div>
+              <div class="hint">Height and Width should be 800X800. Supported Extension is .jpg/.jpeg.
+                Size of the Image should be less than 1MB</div>
+            </div>
+          </div>
+          <div class="row col-md-12">
+            <div class="form-group col-md-6">
+              <label>Secondary Image (Image 02) <span style="color: red; font-weight: bold;">*</span> </label>
+              <div class="custom-dropzone" ngx-dropzone [accept]="'image/jpeg'" [maxFileSize]="1000000"
+                (change)="onSelect($event, 'image3')" [multiple]="false">
+                <img *ngIf="image3 != ''; else Image3Preview" src="{{ 'data:image/jpg;base64,' + image3 }}"
+                  onError="this.src='assets/images/noimage.jpg'" class="rounded" width="60px" height="60px" />
+                <ng-template #Image3Preview>
+
+
+                  <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files3" [file]="f"
+                    [removable]="true" (removed)="onRemove(f, 'image3')">
+                    <!-- <ngx-dropzone-label
+                      >{{ f.name }} ({{ f.type }})</ngx-dropzone-label
+                    > -->
+                  </ngx-dropzone-image-preview>
+
+                  <button type="button" class="btn btn-warning ml-auto btn-update mr-2">Update</button>
+                </ng-template>
+              </div>
+              <div class="hint">Height and Width should be 800X800. Image format is .jpg/.jpeg.
+                Size of the Image should be less than 1MB</div>
+            </div>
+            <div class="form-group col-md-6">
+              <label>Arabic Audio <span style="color: red; font-weight: bold;">*</span> </label>
+              <div class="custom-dropzone" ngx-dropzone [accept]="'audio/mpeg'" (change)="onSelect($event, 'audio')"
+                [multiple]="false" [maxFileSize]="200000">
+                <audio *ngIf="audio; else AudioPreview" controls src="{{ 'data:audio/mp3;base64,' + audio }}"></audio>
+                <ng-template #AudioPreview>
+                  <ngx-dropzone-preview *ngFor="let f of files4" [removable]="true" (removed)="onRemove(f, 'audio')">
+                    <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+
+                  </ngx-dropzone-preview>
+                  <button type="button" class="btn btn-warning ml-auto btn-update mr-2">Update</button>
+                </ng-template>
+              </div>              
+            <div class="hint">Audio format is .mp3. Size of the Audio should be less than 200KB</div>
+            </div>
+          </div>
+          <div class="row col-md-12">
+            <div class="form-group col-md-6">
+              <label>Emirati Dialect Audio</label>
+              <div class="custom-dropzone" ngx-dropzone [accept]="'audio/mpeg'" (change)="onSelect($event, 'audio1')"
+                [multiple]="false" [maxFileSize]="200000">
+                <audio *ngIf="audio1; else AudioPreview1" controls
+                  src="{{ 'data:audio/mp3;base64,' + audio1 }}"></audio>
+                <ng-template #AudioPreview1>
+                  <ngx-dropzone-preview *ngFor="let f of files5" [removable]="true" (removed)="onRemove(f, 'audio1')" style="height: 0px !important">
+                    <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                  </ngx-dropzone-preview>
+                  <button type="button" class="btn btn-warning ml-auto btn-update mr-2">Update</button>
+                </ng-template>
+                <button type="button" class="btn btn-warning ml-auto btn-update mr-2" *ngIf="audio1" (click)="removeClicked($event)">Remove</button>
+              </div>
+              <div class="hint">Audio format is .mp3. Size of the Audio should be less than 200KB</div>
+            </div>
+          </div>
+          <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+            attr.aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100"
+            [ngStyle]="{ width: progress + '%' }">
+            {{ progress }}%
+          </div>
+          <div class="row col-md-12 mt-5">
+            <div class="form-group col-md-6">
+              <button type="button" [routerLink]="['/words']" class="btn cancelBtn">
+                Cancel
+              </button>
+            </div>
+            <div class="form-group col-md-6">
+              <button type="submit" class="btn float-right saveBtn" [disabled]="isImageSaving">
+                Save Update
+              </button>
+            </div>
+          </div>
+        </form>
+      </ng-template>
+    </li>
+  </ul>
+  <div [ngbNavOutlet]="nav"></div>
+</div>

@@ -1,0 +1,7 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<snla-main></snla-main>
+<script type="text/javascript">
+    window.localStorage.setItem("authenticationToken", '@Html.Raw(ViewBag.jwt)');
+</script>

@@ -1,0 +1,103 @@
+
+#cover {
+    background:url("../../../assets/images/Group_1.png") center center no-repeat;
+    background-size: cover;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    // align-items: center;
+    position: relative;
+}
+
+#cover-caption {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+/* only used for background overlay not needed for centering */
+div.main:before {
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    z-index: -1;
+    border-radius: 10px;
+   
+}
+.titleCard_thanku{
+    font-family: PublicSans-Bold;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+color: rgba(23,23,33,1);
+}
+
+// for thanku icon
+
+#Lock {
+    position: absolute;
+    width: 181px;
+    height: 125px;
+    left: 150px;
+    top: 105px;
+    overflow: visible;
+}
+.Path {
+    overflow: visible;
+    position: absolute;
+    width: 181px;
+    height: 124px;
+    left: 0px;
+    top: 0px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Path {
+    fill: rgba(245,245,250,1);
+}
+.Oval {
+    position: absolute;
+    overflow: visible;
+    width: 73px;
+    height: 73px;
+    left: 53px;
+    top: 52px;
+}
+#Oval {
+    fill: rgba(183,155,126,1);
+}
+#Thank_you {
+   
+    line-height: 48px;
+   
+    text-align: center;
+    font-family: PublicSans-Bold;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    color: rgba(23,23,33,1);
+}
+#We_sent_an_email_to {
+    width: 266px;
+height: 40px;
+    line-height: 21px;
+    margin-left: 61px;
+    margin-top: 10px;
+    text-align: center;
+    font-family: PublicSans-Regular;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: rgba(128,131,163,1);
+}
+#Title_be{
+    margin-top: 50%;
+}
+.thankuButton{
+    width: 328px;
+height: 46px;
+border-radius: 10px;
+}

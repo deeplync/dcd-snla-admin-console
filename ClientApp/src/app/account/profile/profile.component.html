@@ -1,0 +1,72 @@
+<form   (ngSubmit)="saveProfileImage()">   
+  <div class="row col-md-12"> 
+    <div class="form-group col-md-3"> 
+        <img [src]="profileImage" onError="this.src='/assets/images/profile.jpg'"  class="rounded-circle" width="200px" height="200px" >
+    </div>
+    <div class="form-group col-md-2 mt-5">
+        <input type="file" accept="image/*" class="form-control border-0" name="media" (change)="onProfileImage_Selected($event)">
+    </div>
+    <div class="form-group col-md-4 mt-5">   
+        <button type="submit" class="btn btn-primary">Update image</button>
+    </div>
+ </div>
+</form>
+<form name="form" role="form" (ngSubmit)="save()" [formGroup]="profileForm" >
+    <div class="row col-md-12">       
+        <div class="form-group col-md-6"> 
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control inputStyle" id="firstName" name="firstName" formControlName="firstName" data-cy="firstname">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="lastName">Last Name</label> 
+            <input type="text" class="form-control inputStyle" id="lastName" name="lastName" formControlName="lastName" data-cy="lastname">
+        </div>
+    </div>
+    <div class="row col-md-12" >
+        <div class="col-md-6" *ngIf="profileForm.get('firstName')!.invalid &&(profileForm.get('firstName')!.dirty || profileForm.get('firstName')!.touched)">
+            <small class="form-text text-danger" *ngIf="profileForm.get('firstName')?.errors?.['required']">
+                First Name is required.
+            </small>
+            <small class="form-text text-danger" *ngIf="profileForm.get('firstName')?.errors?.['minlength']">
+                First Name is required required to be at least 1 characters.
+            </small>
+        </div>
+        <div class="col-md-6" *ngIf="profileForm.get('lastName')!.invalid &&(profileForm.get('lastName')!.dirty || profileForm.get('lastName')!.touched)">
+            <small class="form-text text-danger" *ngIf="profileForm.get('lastName')?.errors?.['required']">
+                Last Name is required.
+            </small>
+            <small class="form-text text-danger" *ngIf="profileForm.get('lastName')?.errors?.['minlength']">
+                Last Name is required required to be at least 1 characters.
+            </small>
+        </div>
+        
+    </div>
+    <div class="row col-md-12"> 
+        <div class="form-group col-md-6"> 
+            <label for="email">Email Id</label>
+            <input type="text" class="form-control inputStyle" id="email" name="email" formControlName="email" data-cy="email" readonly>
+        </div>
+      
+    </div>
+    <div class="row col-md-12" >
+        <div class="col-md-6" *ngIf="profileForm.get('email')!.invalid &&(profileForm.get('email')!.dirty || profileForm.get('email')!.touched)">
+            <small class="form-text text-danger" *ngIf="profileForm.get('email')?.errors?.['required']">
+                Email is required.
+            </small>
+            <small class="form-text text-danger" *ngIf="profileForm.get('email')?.errors?.['minlength']">
+                Email is required required to be at least 6 characters.
+            </small>
+            <small class="form-text text-danger" *ngIf="profileForm.get('email')?.errors?.['email']">
+               Your Email is Invalid!.
+            </small>
+        </div>
+    </div>
+    <div class="row col-md-12"> 
+       <div class="form-group col-md-6"> 
+            <button type="button" [routerLink]="['/']" class="btn btnSize cancelButton">Cancel</button>
+        </div>
+        <div class="form-group col-md-6 "> 
+            <button type="submit" [disabled]="profileForm.invalid||isSaving" class="btn btnSize btn-primary text-white float-right" >Save Update</button>
+        </div>
+    </div>
+  </form>

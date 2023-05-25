@@ -1,0 +1,78 @@
+<div id="Page_TitleTablet">
+  <div id="Page_TitleTablet_fh">
+    <div id="dash-welcome-home">
+      <span class="name">Welcome <b>{{account?.name}}</b></span>
+      <span class="header">SCAN AND LEARN ARABIC - ADMINISTRATION CONSOLE</span>
+    </div>
+    <!-- <div id="Welcome_back_home">
+      <span>{{pageTitle}}</span>
+    </div> -->
+  </div>
+</div>
+<div class="home-container">
+  <div class="row rounded mb-2">
+    <!-- <div class="col-md-12 col-sm-12  text-white coverImage p-5">
+    </div> -->
+
+
+    <!-- <div class="row placeholders mb-3"> -->
+    <div class="grid-space">
+      <div class="card-1">
+        <div class="card-body ">
+          <div class="count">{{learnedCount}}/{{totelLearned}}</div>
+          <div class="chartHeading-1 mt-2 ">LEARNED WORDS&nbsp;
+            <button class="dashboardButton" [routerLink]="['/report/learned-word-report']"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-space-1">
+      <div class="card-2">
+        <div class="card-body ">
+          <div class="count">{{scannedCount}}/{{totalScanned}}</div>
+          <div class="chartHeading-1 mt-2">SCANNED WORDS&nbsp;
+            <button class="dashboardButton" [routerLink]="['/report/scanned-word-report']"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-space-2">
+      <div class="card-3">
+        <div class="card-body ">
+          <div class="count">{{RegistrationCount}}</div>
+          <div class="chartHeading-1 mt-2">REGISTRATIONS THIS MONTH&nbsp;
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- </div> -->
+    <!-- <div class="row placeholders mb-3 mt-4"> -->
+
+    <div class="col-md-6-home">
+      <div class="card">
+        <div class="chartHeading mt-2">ACTIVE USERS</div>
+        <div style= "align-items: center;"class="card-body">
+          <snla-no-of-active-user></snla-no-of-active-user>
+        </div>
+      </div>
+      <span class="card-register">
+        <div class="chartHeading mt-2">REGISTRATIONS MONTHLY</div>
+        <div class="card-body align-items-center d-flex justify-content-center pt-5">
+          <snla-no-of-registration></snla-no-of-registration>
+        </div>
+      </span>
+    </div>
+    <!-- </div>
+   -->
+    <!-- <div class="row placeholders mb-3"> -->
+    <div class="col-md-12-home">
+      <div class="card-nationality">
+        <div class="chartHeading mt-2">USERS BY NATIONALITY</div>
+        <div class="card-body align-items-center d-flex justify-content-center">
+          <snla-no-of-nationalities></snla-no-of-nationalities>
+        </div>
+      </div>
+    </div>
+    <!-- </div> -->
+  </div>
+</div>

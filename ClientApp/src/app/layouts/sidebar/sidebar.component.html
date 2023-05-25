@@ -1,0 +1,81 @@
+<nav id="sidebar" style="border-right: 1px solid #8081914a;height: 143%;">
+  <div class="px-4 pb-4">
+    <div style="display: flex;justify-content: center;width: 135px;
+    height: 135px;
+    margin-left: 14%;margin-bottom: 15px;">
+      <img src="assets/images/logo-snla.png">
+    </div>
+    <!-- <h6 class="sidebarTitle">Admin Tool</h6> -->
+    <ul class="list-unstyled components mb-5">
+      <li style="margin-bottom: 10px;" (mouseover)="overviewIcon='assets/images/icons/overview-white.png'"
+        (click)="menuClick(1)" (mouseout)="overviewIcon='../../../assets/images/icons/overview-grey.png'"
+        (click)="menuClick(1)">
+        <a routerLink="/home" [class.active]="i==1" (click)="menuClick(1)">
+          <div style="display: flex; align-items: center;">
+            <img [src]="i == 1 ? 'assets/images/icons/overview-white.png': overviewIcon" (click)="menuClick(1)">
+            <span style="margin-left: 5%; margin-top: 1px;">Overview</span>
+          </div>
+        </a>
+      </li>
+      <li style="margin-bottom: 10px; " (mouseover)="customerIcon='assets/images/icons/customer-white.png'"
+        (mouseout)="customerIcon='../../../assets/images/icons/Customers-grey.png'" (click)="menuClick(2)">
+        <a routerLink="customers" [class.active]="i==2">
+          <img [src]="i == 2 ? 'assets/images/icons/customer-white.png': customerIcon">
+          &nbsp;&nbsp;Customers
+        </a>
+      </li>
+      <li style="margin-bottom: 10px;" (mouseover)="wordsManagementIcon='assets/images/icons/word-white.png'"
+        (mouseout)="wordsManagementIcon='../../../assets/images/icons/word-grey.png'" (click)="menuClick(3)">
+        <a routerLink="words" [class.active]="i==3">
+          <img [src]="i == 3 ? 'assets/images/icons/word-white.png': wordsManagementIcon">
+          &nbsp;&nbsp;Words Management</a>
+      </li>
+
+      <li style="margin-bottom: 10px;" (mouseover)="reportIcon='assets/images/icons/report-white.png'"
+        (mouseout)="reportIcon='../../../assets/images/icons/report-grey.png'" (click)="menuClick(4)">
+        <a href="javascript:void(0);" data-toggle="collapse" data-target="#reports" aria-controls="reports"
+          aria-expanded="false" aria-label="Toggle collapse" (click)="toggleSidebar()" [class.active]="i==4">
+          <img [src]="i == 4 ? 'assets/images/icons/report-white.png': reportIcon">
+          &nbsp;&nbsp;Report
+        </a>
+        <div class="navbar-collapse collapse" id="reports" [ngbCollapse]="isSidebarCollapsed">
+          <ul>
+            <li class="a" (mouseover)="mouseOverReportIcon($event)" (mouseout)="mouseOutReportIcon($event)"
+              (click)="menuClick(4)">
+              <a [routerLink]="['/report/scanned-word-report']" routerLinkActive="active1"
+                [routerLinkActiveOptions]="{ exact: true }">
+                &nbsp;&nbsp;Scanned Word</a>
+            </li>
+            <li class="a" (mouseover)="mouseOverReportIcon($event)" (mouseout)="mouseOutReportIcon($event)"
+              (click)="menuClick(4)">
+              <a [routerLink]="['/report/learned-word-report']" routerLinkActive="active1"
+                [routerLinkActiveOptions]="{ exact: true }">&nbsp;&nbsp;Learned Word</a>
+            </li>
+            <li class="a" (mouseover)="mouseOverReportIcon($event)" (mouseout)="mouseOutReportIcon($event)"
+              (click)="menuClick(4)">
+              <a [routerLink]="['/report/user-message']" routerLinkActive="active1"
+                [routerLinkActiveOptions]="{ exact: true }">&nbsp;&nbsp;User Message</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li style="margin-bottom: 10px;" (mouseover)="settingsIcon='assets/images/icons/settings-white.png'"
+        (mouseout)="settingsIcon='../../../assets/images/icons/settings-grey.png'" (click)="menuClick(5)">
+        <a routerLink="settings" [class.active]="i==5">
+          <img [src]="i == 5 ? 'assets/images/icons/settings-white.png': settingsIcon">
+          &nbsp;&nbsp;Settings</a>
+      </li>
+      <li style="margin-bottom: 2px; margin-left: 5px;" (mouseover)="logoutIcon='assets/images/icons/logout-white.png'"
+        (mouseout)="logoutIcon='../../../assets/images/icons/logout-grey.png'" (click)="menuClick(6)">
+        <!-- <a class="dropdown-item py-2 listItemStyle" href="/Home/LogOut?area=MicrosoftIdentity" [class.active]="i==6">
+          <img [src]="assets/images/icons/icon06_white.png" class="mr-2">Log Out</a> -->
+        <a (click)="logoutClick()" [class.active]="i==6" routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }">
+          <img [src]="i == 6 ? 'assets/images/icons/logout-grey.png': logoutIcon">
+
+          &nbsp;&nbsp;&nbsp;&nbsp;Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>

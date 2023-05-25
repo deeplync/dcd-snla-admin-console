@@ -1,0 +1,7 @@
+<div *ngIf="isLoading">
+  <div id="pause" class="d-flex align-items-center justify-content-center">
+    <div id="spinner"></div>
+  </div>
+</div>
+<ngx-charts-pie-chart style="align-items:center;" [view]="view" [results]="activeUserData" [legend]=true [scheme]="colorScheme">
+</ngx-charts-pie-chart>

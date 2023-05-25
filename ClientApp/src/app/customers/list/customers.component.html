@@ -1,0 +1,114 @@
+<div class="mb-1">
+    <div>
+        <div>
+            <span class="ml-1">Hi <b>{{account?.name}}</b></span>
+        </div>
+    </div>
+</div>
+<div class="row no-gutters">
+    <div class="col-md-3">
+        <div id="Welcome_back">
+            <span class="ml-1">{{pageTitle}}</span>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-7">
+        <div class="row col-md-12-customer no-gutters">
+            <div class="col-6 ">
+                <div class="row col-12 no-gutters">
+                    <div class="col-5 selectLabels"><span class="labalSelect-customer">By Nationality</span></div>
+                    <div class="col-7">
+                        <select class="form-control selectBoxStyle" #nationality
+                            (change)="filterByNationality(nationality.value)">
+                            <option value="">All</option>
+                            <option *ngFor="let nation of nations" [value]="nation.name">{{nation.name}}</option>
+                        </select>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-6 ">
+                <div class="row col-12 no-gutters ">
+                    <div class="col-5 selectLabels"><span class="labalSelect-customer">By Access Date</span></div>
+                    <div class="col-7">
+                        <span>
+                            <input type="date" class="form-control" #accessDate
+                                (change)="filterByAccessDate(accessDate.value)" />
+                        </span>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+</div>
+<!-- <div class="row col-md-12">
+        <div class="col-md-6">
+            <div class="row col-md-12">
+            <div class="col-6"> <span class="labalSelect">By Nationality</span></div>
+            <div class="col-6">
+                <select class="form-control selectBoxStyle" #nationality (change)="filterByNationality(nationality.value)">
+                    <option value="all">All</option>
+                    <option *ngFor="let nation of nations" [value]="nation.name">{{nation.name}}</option>
+               </select>
+            </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row col-md-12">
+            <div class="col-6"> <span class="labalSelect">By Access Date</span></div>
+            <div class="col-6">
+                <span>
+                    <input type="date" class="form-control" #accessDate (change)="filterByAccessDate(accessDate.value)"/>
+                </span>
+            </div>
+        </div>
+        </div>
+    </div> -->
+<div>
+    <div class="table-responsive" id="customers" *ngIf="customers && customers.length >= 0">
+        <table>
+            <tr class="header">
+                <th class="pl-4">Id</th>
+                <th>Name</th>
+                <th>Words Scanned</th>
+                <th>User Since</th>
+                <th>Last Access Date</th>
+                <th>Nationality</th>
+            </tr>
+
+            <tbody>
+                <tr *ngFor="let customer of customers; trackBy: trackId;let i = index">
+                    <td class="pl-4">{{(page-1)*20+i+1}}</td>
+                    <td>{{customer.firstName}}</td>
+                    <td>{{customer.scannedCount}}</td>
+                    <td>{{customer.createdDate | formatMediumDate}}</td>
+                    <td>{{customer.lastAccessedDate | formatMediumDate}}</td>
+                    <td>{{customer.nationality}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="customers.length == 0" style="margin-top: 35px;">
+        <h1>No data available</h1>
+    </div>
+
+    <div *ngIf="customers.length > 0">
+        <!-- <div class="row ">
+            <snla-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></snla-item-count>
+        </div> -->
+
+        <div class="row">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5"
+                [rotate]="true" [boundaryLinks]="true" (pageChange)="transition()"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="w-100 h-100 ">
+  <ngx-charts-bar-horizontal-stacked [view]="view" [results]="nationalityReportData" [scheme]="colorScheme"
+    [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend"
+    [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel" [yAxis]="true" [xAxisTickFormatting]="xAxisFormat">
+    <ng-template #tooltipTemplate let-model="model">
+      <!-- fields are series/name/value -->
+      <div class="tt">
+        {{model.value}}
+      </div>
+    </ng-template>
+  </ngx-charts-bar-horizontal-stacked>
+
+</div>
+<div *ngIf="isLoading">
+  Loading..................
+</div>

@@ -1,0 +1,15 @@
+<div class="wrapper d-flex align-items-stretch" *ngIf='!showThankYou'>
+  <snla-sidebar></snla-sidebar>
+    <!-- Page Content  -->
+  <div id="content" class="px-4 ">
+    <snla-navbar></snla-navbar>
+
+    
+    
+    <router-outlet></router-outlet>
+  </div>
+</div>
+<div  *ngIf='showThankYou'>
+  <router-outlet name="route1"></router-outlet>
+</div>
+

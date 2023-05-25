@@ -1,0 +1,159 @@
+<div class="mb-1">
+    <div>
+        <div>
+            <span>Hi {{account?.name}}</span>
+        </div>
+    </div>
+</div>
+<div class="row  no-gutters">
+    <div class="col-md-2">
+        <div id="Welcome_back">
+            <span>{{pageTitle}}</span>
+        </div>
+    </div>
+    <!-- <div class="col-md-2"></div> -->
+    <div class="col-md-8">
+        <div class="row">
+            <!-- <div class=" col-md-5"> <span class="labalSelect-message">By Message Type</span></div>
+        <div class="col-md-7">
+            <select class="form-control selectBoxStyle" #messageType (change)="onSelectType(messageType.value)">
+                <option value="0">Select</option>
+                <option value="1">Feedback</option>
+                <option value="2">Issue</option>
+                <option value="3">Suggestion</option>
+            </select>
+        </div> -->
+            <div class="col-md-2"> <span class="labalSelect-message">By Message Type</span></div>
+            <div class="col-md-2">
+                <select class="form-control selectBoxStyle" #messageType>
+                    <option value="0">Select</option>
+                    <option value="1">Feedback</option>
+                    <option value="2">Issue</option>
+                    <option value="3">Suggestion</option>
+                </select>
+            </div>
+            <div class="col-md-1"><span class="labalSelect-message">From Date</span></div>
+            <div class="col-md-3">
+                <span>
+                    <input type="date" class="form-control" #fromDate />
+                </span>
+            </div>
+            <div class="col-md-1"><span class="labalSelect-message">To Date</span></div>
+            <div class="col-md-3">
+                <span>
+                    <input type="date" class="form-control" #toDate />
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group col-md-2">
+        <button type="button" class="btn saveBtn float-left"
+            (click)="onSelectType(messageType.value, fromDate.value, toDate.value )">
+            Search
+        </button>
+    </div>
+</div>
+
+
+<!-- {{allUserMessages.length}} -->
+<div class="row px-4" style="display: flex; justify-content: right;">
+    <div style="display: none;">
+        <button #print style="    width: 70px;
+        border-radius: 10px;
+        margin-top: 25px;
+        background-color: #3F639C !important;
+        color: white;"
+            [printStyle]="{table : {'border': 'solid #000'}, td : {'border': 'solid 1px', 'text-align': 'center'} }"
+            printSectionId="print-section" ngxPrint>Print</button>
+    </div>
+
+    <div>
+        <button type="button" class="btn cancelBtn" printTitle="User Messages" (click)="triggerPrint(messageType.value)">
+            Print
+        </button>
+    </div>
+
+    <!-- <div>
+        <button *ngIf="btn1" (click)="triggerPrint(messageType.value)"> Print1 </button>
+    </div> -->
+
+
+</div>
+<!-- <div class="row col-md-12">
+    <div class="col-md-6"></div>
+    <div class="col-md-6">
+        <div class="row col-md-12">
+        <div class="col-6"> <span class="labalSelect">By Message Type</span></div>
+        <div class="col-6">
+            <select class="form-control selectBoxStyle" #messageType (change)="onSelectType(messageType.value)">
+                <option value="0">Select</option>
+                <option value="1">Feedback</option>
+                <option value="2">Issue</option>
+                <option value="3">Suggestion</option>
+            </select>
+        </div>
+        </div>
+    </div>
+</div> -->
+<div *ngIf="isLoading">
+    <div id="pause" class="d-flex align-items-center justify-content-center">
+        <div id="spinner"></div>
+    </div>
+</div>
+
+<div>
+    <div class="table-responsive" id="userMessage" *ngIf="userMessages && userMessages.length > 0">
+        <table>
+            <tr class="header">
+                <th class="pl-4" style="width: 10%;">Sl.No</th>
+                <th style="width: 20%;">User Name</th>
+                <th style="width: 20%;">Message Type</th>
+                <th style="width: 30%;">Description</th>
+                <th style="width: 20%;">Created Date</th>
+            </tr>
+            <tbody>
+                <tr *ngFor="let message of userMessages; trackBy: trackId;let i = index">
+                    <td class="pl-4">{{i+1}}</td>
+                    <td>{{message.firstName}} {{message.lastName}}</td>
+                    <td>{{message.messageType}}</td>
+                    <td>{{message.description}}</td>
+                    <td>{{message.createdDateMobile | formatMediumDateTime}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="userMessages">
+        <!-- <div class="row ">
+            <snla-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }">
+            </snla-item-count>
+        </div> -->
+
+        <div class="row ">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5"
+                [rotate]="true" [boundaryLinks]="true" (pageChange)="transition()"></ngb-pagination>
+        </div>
+    </div>
+</div>
+
+<div id="print-section" style="display: none;">
+    <div class="table-responsive">
+        <table style="width: 100%;">
+            <tr class="header">
+                <th class="pl-4" style="width: 10%;">Sl.No</th>
+                <th style="width: 20%;">User Name</th>
+                <th style="width: 20%;">Message Type</th>
+                <th style="width: 30%;">Description</th>
+                <th style="width: 20%;">Created Date</th>
+            </tr>
+            <tbody #printContent>
+                
+                <!-- <tr *ngFor="let message of allUserMessages;let i = index">
+                    <td class="pl-4">{{i+1}}</td>
+                    <td>{{message.firstName}} {{message.lastName}}</td>
+                    <td>{{message.messageType}}</td>
+                    <td style="text-align: left;">{{message.description}}</td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+</div>

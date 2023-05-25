@@ -1,0 +1,48 @@
+<div id="Page_TitleTablet" class="mb-1">
+    <div id="Page_TitleTablet_fh">
+        <div id="Hi_Dash_Welcome_bac">
+            <span class="ml-1">Hi {{account?.name}}</span>
+        </div>
+        <div id="Welcome_back">
+            <span class="ml-1">{{pageTitle}}</span>
+        </div>
+    </div>
+</div>
+<div *ngIf="isLoading">
+    <!-- Loading.................. -->
+    <div id="pause" class="d-flex align-items-center justify-content-center">
+        <div id="spinner"></div>
+    </div>
+</div>
+<div class="table-responsive" id="words" *ngIf="words && words.length > 0">
+    <table class="w-100 ">
+        <thead>
+            <tr class="header">
+                <th class="pl-4">Id</th>
+                <th>English Title</th>
+                <th>Arabic Title</th>
+                <th>Emirati Dialect in English</th>
+                <!-- <th>Created Date</th> -->
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let word of words; trackBy: trackId; let i = index">
+                <td class="pl-4">{{ i + 1 }}</td>
+                <td>{{ word.name }}</td>
+                <td>{{ word.titleArabic }}</td>
+                <td>{{ word.emiratiDialect }}</td>
+                <!-- <td>{{ word.createdDate | formatMediumDate}}</td> -->
+                <td>
+                    <button type="button" [routerLink]="['/words', word.id, 'edit']" class="btn  btn-sm">
+                        <span style="background-color:#3F639C;border-radius: 50%;" class="p-2">
+                            <!-- <i class="fa fa-pencil-square-o" aria-hidden="true" style="color: white;"></i> -->
+
+                            <fa-icon icon="pencil-alt" class="text-white"></fa-icon>
+                        </span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

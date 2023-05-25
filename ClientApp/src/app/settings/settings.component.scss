@@ -1,0 +1,56 @@
+.settingsTitle{
+    font-family: PublicSans-Bold;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    color: rgba(0,0,0,1);
+}
+.cancelbtn{
+    background:rgba(223,224,223,1);
+    border-color: rgba(223,224,223,1);
+    color: black;
+    width: 98px;
+    height: 46px;
+    border-radius: 10px;
+}
+.savebtn{
+    width: 98px;
+    height: 46px;
+    border-radius: 10px;
+}
+.card{
+    border-radius: 15px;
+    margin-bottom: 12px;
+}
+.collapseIcon{
+    background-color:#3F639C;
+   
+    border-radius: 50%;
+    width:32px;
+    height: 32px;
+    display: flex; /* or inline-flex */
+    align-items: center; 
+    justify-content: center;
+}
+.iconColor{
+    color:  white;
+}
+.bgExpand{
+    background: #3F639C;
+    border-radius: 10px;
+    
+}
+.bgExpand .settingsTitle{
+    color: white !important;
+}
+.bgExpand .collapseIcon{
+    background-color: white;}
+.bgExpand .iconColor{
+        color: #3F639C;
+    }
+// editor styles
+::ng-deep .angular-editor .angular-editor-wrapper .angular-editor-textarea blockquote {
+    margin-left: 1rem;
+    border-left: 0px solid #dfe2e5 !important;
+    padding-left: .5rem;
+}

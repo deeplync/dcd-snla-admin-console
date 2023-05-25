@@ -1,0 +1,49 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- develop
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+- stage: 'GetSource'
+  jobs:
+  - job: GetSource
+    steps:    
+    - task: UseDotNet@2
+      displayName: 'Use .NET Core sdk'
+      inputs:
+        packageType: 'sdk'
+        version: 6.0.x
+        installationPath: $(Agent.ToolsDirectory)/dotnet
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'restore'
+        projects: '**/*.csproj'
+        feedsToUse: 'select'
+    - task: CmdLine@2
+      inputs:
+        script: |
+          ls -al 
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'publish'
+        publishWebProjects: true
+        arguments: '--configuration $(BuildConfiguration) --output $(System.DefaultWorkingDirectory)'
+    - task: CmdLine@2
+      inputs:
+        script: |
+          ls -al
+    - task: AzureRmWebAppDeployment@4
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'Azure subscription 1 (32491e7c-0878-4a9f-951a-af49ea65c396)'
+        appType: 'webAppLinux'
+        WebAppName: 'adminwebapptest'
+        packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    
+  

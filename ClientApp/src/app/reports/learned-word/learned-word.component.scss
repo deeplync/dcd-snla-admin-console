@@ -1,0 +1,11 @@
+tr:nth-child(odd) {
+    background-color: #DAE1E9 !important;
+}
+tr:nth-child(odd).header{
+    background-color: white !important;
+}
+.col-md-12-report{
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-left: 19%;
+    }

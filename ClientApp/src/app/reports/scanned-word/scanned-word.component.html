@@ -1,0 +1,64 @@
+<!-- <div class="row">
+    <div class="col-md-12">
+        <div class="row col-md-12">
+            <div class="col-6"> <span class="labalSelect">By Scanned/Not Sccaned</span></div>
+            <div class="col-6">
+                <span>
+                    <select class="form-control selectBoxStyle" #selectType (change)="onSelectType(selectType.value)">
+                        <option value="notScanned">Not Scanned</option>
+                        <option value="scanned">Scanned</option>
+                    </select>
+                </span>
+            </div>
+        </div>
+    </div>
+</div> -->
+<div class="mb-1">
+    <div>
+        <div>
+            <span>Hi {{account?.name}}</span>
+        </div>
+    </div>
+</div>
+<div class="row  no-gutters">
+    <div class="col-md-3">
+        <div id="Welcome_back">
+            <span>{{pageTitle}}</span>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-6">
+        <div class="row col-md-12-report">
+            <div class="col-md-5"><span class="labalSelect">By Scanned/Not Scanned</span></div>
+            <div class="col-md-7">
+                <span>
+                    <select class="form-control selectBoxStyle" #selectType (change)="onSelectType(selectType.value)">
+                        <option value="notScanned">Not Scanned</option>
+                        <option value="scanned">Scanned</option>
+                    </select>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="isLoading">
+    <div id="pause" class="d-flex align-items-center justify-content-center">
+        <div id="spinner"></div>
+    </div>
+</div>
+<div class="table-responsive" *ngIf="wordsReport&&wordsReport.length>0">
+    <table>
+        <tr class="header">
+            <th class="pl-4"> Sl.No</th>
+            <th>English Title</th>
+            <th>Arabic Title</th>
+            <th>Scanned Count</th>
+        </tr>
+        <tr *ngFor="let word of wordsReport;let i = index">
+            <td class="pl-4">{{i+1}}</td>
+            <td>{{word.name}}</td>
+            <td>{{word.titleArabic}}</td>
+            <td>{{word.scannedCount}}</td>
+        </tr>
+    </table>
+</div>

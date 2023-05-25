@@ -1,0 +1,49 @@
+.dropdown-item:hover{
+    background-color: rgba(183,155,126,1);
+    border-color: rgba(183,155,126,1);
+    color: white;
+    border-radius: 10px;
+}
+.dropdown-item.active, .dropdown-item:active {
+    background-color: rgba(183,155,126,1);
+    border-color: rgba(183,155,126,1);
+    color: white;
+    border-radius: 10px;
+}
+.listItemStyle{
+    font-family: InterV_Semi-Bold;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+}
+.navitem-div{
+    border-radius: 20px;
+}
+.nameStyle{
+    line-height: 20px;
+    text-align: left;
+    font-family: Cairo;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: rgba(17,20,45,1)
+    
+}
+.roleStyle{
+    line-height: 18px;
+text-align: left;
+font-family: Cairo;
+font-style: normal;
+font-weight: normal;
+font-size: 13px;
+color: rgba(128,129,145,1);
+}
+.navbar
+{
+    background-color: rgba(255,255,255,1) !important;
+    height: 60px;
+}
+.bgCollapse
+{
+    background-color: rgba(255,255,255,1) !important;
+}
